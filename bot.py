@@ -7,10 +7,11 @@ from collections import defaultdict
 # ══════════════════════════════════════════════════════════
 #  CONFIGURATION — METS TES CLÉS ICI
 # ══════════════════════════════════════════════════════════
-DISCORD_TOKEN     = "METS_TON_TOKEN_DISCORD_ICI"
-OPENROUTER_API_KEY = "METS_TA_CLE_OPENROUTER_ICI"
+import os
+DISCORD_TOKEN    = os.environ.get("DISCORD_TOKEN")
+OPENROUTER_API_KEY  = os.environ.get("OPENROUTER_API_KEY")
 
-MAX_HISTORY        = 20
+MAX_HISTORY        = 10
 MAX_SEARCH_RESULTS = 5
 
 SYSTEM_PROMPT = """Tu t'appelles Nova"""
