@@ -55,7 +55,7 @@ async def call_openrouter(messages: list) -> str:
         "X-Title": "Nova Discord Bot"
     }
     body = {
-        "model": "mistralai/mistral-7b-instruct:free",
+       "model": "meta-llama/llama-3.2-3b-instruct:free",
         "messages": messages,
         "max_tokens": 1500,
         "temperature": 0.7
