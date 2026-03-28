@@ -63,8 +63,13 @@ async def call_openrouter(messages: list) -> str:
     async with aiohttp.ClientSession() as session:
         async with session.post(url, headers=headers, json=body, timeout=aiohttp.ClientTimeout(total=30)) as resp:
             data = await resp.json()
-            return data["choices"][0]["message"]["content"]
-
+            print(f"RÉPONSE OPENROUTER : {data}")
+            if "choices" in data and len(data["choices"]) > 0:
+                return data["choices"][0]["message"]["content"]
+            elif "error" in data:
+                raise Exception(f"OpenRouter erreur : {data['error']}")
+            else:
+                raise Exception(f"Réponse inattendue : {data}")
 
 # ══════════════════════════════════════════════════════════
 #  RECHERCHE WEB DUCKDUCKGO
